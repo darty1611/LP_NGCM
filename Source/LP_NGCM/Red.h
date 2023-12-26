@@ -2,6 +2,7 @@
 
 #pragma once
 
+#include "HealthSystemUsage.h"
 #include "CoreMinimal.h"
 #include "PaperZDCharacter.h"
 #include "Red.generated.h"
@@ -9,11 +10,12 @@
 class UInputMappingContext;
 class UInputAction;
 struct FInputActionValue;
+class UHealthSystem;
 /**
  * 
  */
 UCLASS()
-class LP_NGCM_API ARed : public APaperZDCharacter
+class LP_NGCM_API ARed : public APaperZDCharacter, public IHealthSystemUsage
 {
 	GENERATED_BODY()
 
@@ -37,6 +39,10 @@ class LP_NGCM_API ARed : public APaperZDCharacter
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
 	UInputAction* MoveAction;
 
+	/** Health System*/
+	UPROPERTY(EditAnywhere, Category = "Health System")
+    class UHealthSystem* HealthComponent;
+
 protected:
 	// APawn interface
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
@@ -52,4 +58,8 @@ protected:
 	/** Called for movement input */
 	void Move(const FInputActionValue& Value);
 
+public:
+	void takeDamage_Implementation(float ammount) override;
+	void heal_Implementation(float ammount) override;
+	void die_Implementation() override;
 };
