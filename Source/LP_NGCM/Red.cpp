@@ -34,7 +34,7 @@ ARed::ARed() {
 	cameraBoom->SetWorldRotation(FRotator(-20, -90, 0));
 	
 
-	HealthComponent = CreateDefaultSubobject<UHealthSystem>(TEXT("Health System"));
+	HealthSystemComponent = CreateDefaultSubobject<UHealthSystem>(TEXT("Health System"));
 }
 
 void ARed::Move(const FInputActionValue &Value) {
@@ -93,16 +93,16 @@ void ARed::SetupPlayerInputComponent(UInputComponent *PlayerInputComponent) {// 
 
 
 void ARed::takeDamage_Implementation(float ammount) {
-	HealthComponent->takeDamage(ammount);
+	HealthSystemComponent->takeDamage(ammount);
 
-	if (HealthComponent->isDead()) {
+	if (HealthSystemComponent->isDead()) {
 		die_Implementation();          
 	}
 
 }
 
 void ARed::heal_Implementation(float ammount) {
-	 HealthComponent->heal(ammount);
+	 HealthSystemComponent->heal(ammount);
 }
 
 void ARed::die_Implementation() {}

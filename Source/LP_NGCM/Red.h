@@ -41,7 +41,7 @@ class LP_NGCM_API ARed : public APaperZDCharacter, public IHealthSystemUsage
 
 	/** Health System*/
 	UPROPERTY(EditAnywhere, Category = "Health System")
-    class UHealthSystem* HealthComponent;
+    class UHealthSystem* HealthSystemComponent;
 
 protected:
 	// APawn interface
@@ -62,4 +62,6 @@ public:
 	void takeDamage_Implementation(float ammount) override;
 	void heal_Implementation(float ammount) override;
 	void die_Implementation() override;
+	UFUNCTION(BlueprintCallable)
+        UHealthSystem *getHealthSystemComponent() {return HealthSystemComponent;}
 };
