@@ -42,6 +42,8 @@ class LP_NGCM_API ARed : public APaperZDCharacter, public IHealthSystemUsage
 	/** Attack Input Action */
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
 	UInputAction* AttackAction;
+	UPROPERTY(EditAnywhere, Category = "Punching")
+	class UBoxComponent* attackBox;
 
 	/** Health System*/
 	UPROPERTY(EditAnywhere, Category = "Health System")
@@ -71,4 +73,7 @@ public:
 
 	UFUNCTION(BlueprintImplementableEvent) 
 	void Attack();
+	void enableAttackBox();
+	void disableAttackBox();
+	void attackHit( UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult & SweepResult);
 };

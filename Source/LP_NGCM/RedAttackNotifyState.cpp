@@ -12,7 +12,7 @@ void URedAttackNotifyState::OnNotifyBegin_Implementation(
       if (IsValid(p)) {
       
           p->takeDamage_Implementation(10);
-
+          p->enableAttackBox();
       }
 
     }
@@ -22,4 +22,15 @@ void URedAttackNotifyState::OnNotifyBegin_Implementation(
 }
 
 void URedAttackNotifyState::OnNotifyEnd_Implementation(
-    UPaperZDAnimInstance *OwningInstance) {}
+    UPaperZDAnimInstance *OwningInstance) {
+
+      if (IsValid(OwningInstance)) {
+        ARed* p = Cast<ARed>(OwningInstance->GetOwningActor());
+      if (IsValid(p)) {
+      
+          p->disableAttackBox();
+      }
+
+      }
+    
+}

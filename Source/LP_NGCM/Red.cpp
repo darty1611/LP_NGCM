@@ -13,6 +13,7 @@
 #include "EnhancedInputSubsystems.h"
 #include "InputActionValue.h"
 #include "HealthSystem.h"
+#include "Components/BoxComponent.h"
 
 
 ARed::ARed() {
@@ -33,6 +34,10 @@ ARed::ARed() {
 	
 	cameraBoom->SetWorldRotation(FRotator(-20, -90, 0));
 	
+	attackBox = CreateDefaultSubobject<UBoxComponent>(TEXT("Attack Box"));
+	attackBox->SetupAttachment(RootComponent);
+	disableAttackBox();
+	attackBox->OnComponentBeginOverlap.AddDynamic(this, &ARed::attackHit);
 
 	HealthSystemComponent = CreateDefaultSubobject<UHealthSystem>(TEXT("Health System"));
 }
@@ -110,4 +115,26 @@ void ARed::heal_Implementation(float ammount) {
 }
 
 void ARed::die_Implementation() {}
+
+void ARed::enableAttackBox() {
+       
+	attackBox->SetCollisionProfileName("NoCollision");	
+
+}
+
+void ARed::disableAttackBox() { 
+	
+	attackBox->SetCollisionProfileName("Weapon"); 
+
+}
+
+void ARed::attackHit(UPrimitiveComponent *OverlappedComponent,
+                     AActor *OtherActor, UPrimitiveComponent *OtherComp,
+                     int32 OtherBodyIndex, bool bFromSweep,
+                     const FHitResult &SweepResult) {
+
+	UE_LOG(LogTemp, Display, TEXT("hitou muleki"));
+
+
+}
 
