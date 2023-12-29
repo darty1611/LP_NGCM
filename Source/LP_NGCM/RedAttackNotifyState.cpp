@@ -11,8 +11,8 @@ void URedAttackNotifyState::OnNotifyBegin_Implementation(
         ARed* p = Cast<ARed>(OwningInstance->GetOwningActor());
       if (IsValid(p)) {
       
-          p->takeDamage_Implementation(10);
           p->enableAttackBox();
+
       }
 
     }

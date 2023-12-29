@@ -118,13 +118,13 @@ void ARed::die_Implementation() {}
 
 void ARed::enableAttackBox() {
        
-	attackBox->SetCollisionProfileName("NoCollision");	
+	attackBox->SetCollisionProfileName("Weapon");	
 
 }
 
 void ARed::disableAttackBox() { 
 	
-	attackBox->SetCollisionProfileName("Weapon"); 
+	attackBox->SetCollisionProfileName("NoCollision"); 
 
 }
 
@@ -133,7 +133,12 @@ void ARed::attackHit(UPrimitiveComponent *OverlappedComponent,
                      int32 OtherBodyIndex, bool bFromSweep,
                      const FHitResult &SweepResult) {
 
-	UE_LOG(LogTemp, Display, TEXT("hitou muleki"));
+
+
+	if (IHealthSystemUsage *other = Cast<IHealthSystemUsage>(OtherActor)) {
+          other->takeDamage_Implementation(35);
+		  disableAttackBox();
+	}
 
 
 }
