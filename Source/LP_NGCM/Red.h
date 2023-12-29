@@ -39,6 +39,10 @@ class LP_NGCM_API ARed : public APaperZDCharacter, public IHealthSystemUsage
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
 	UInputAction* MoveAction;
 
+	/** Attack Input Action */
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
+	UInputAction* AttackAction;
+
 	/** Health System*/
 	UPROPERTY(EditAnywhere, Category = "Health System")
     class UHealthSystem* HealthSystemComponent;
@@ -64,4 +68,7 @@ public:
 	void die_Implementation() override;
 	UFUNCTION(BlueprintCallable)
         UHealthSystem *getHealthSystemComponent() {return HealthSystemComponent;}
+
+	UFUNCTION(BlueprintImplementableEvent) 
+	void Attack();
 };

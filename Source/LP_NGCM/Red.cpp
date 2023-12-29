@@ -82,6 +82,10 @@ void ARed::SetupPlayerInputComponent(UInputComponent *PlayerInputComponent) {// 
 		// Moving
 		EnhancedInputComponent->BindAction(MoveAction, ETriggerEvent::Triggered, this, &ARed::Move);
 
+		// Attacking
+		EnhancedInputComponent->BindAction(AttackAction, ETriggerEvent::Started, this, &ARed::Attack);
+
+
 	
 	}
 	else
@@ -106,6 +110,4 @@ void ARed::heal_Implementation(float ammount) {
 }
 
 void ARed::die_Implementation() {}
-
-
 
