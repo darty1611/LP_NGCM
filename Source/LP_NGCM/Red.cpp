@@ -14,6 +14,7 @@
 #include "InputActionValue.h"
 #include "HealthSystem.h"
 #include "Components/BoxComponent.h"
+#include "BaseProjectile.h"
 
 
 ARed::ARed() {
@@ -38,6 +39,7 @@ ARed::ARed() {
 	attackBox->SetupAttachment(RootComponent);
 	disableAttackBox();
 	attackBox->OnComponentBeginOverlap.AddDynamic(this, &ARed::attackHit);
+
 
 	HealthSystemComponent = CreateDefaultSubobject<UHealthSystem>(TEXT("Health System"));
 }
@@ -90,6 +92,9 @@ void ARed::SetupPlayerInputComponent(UInputComponent *PlayerInputComponent) {// 
 		// Attacking
 		EnhancedInputComponent->BindAction(AttackAction, ETriggerEvent::Started, this, &ARed::Attack);
 
+		// Shooting
+		EnhancedInputComponent->BindAction(ShootAction, ETriggerEvent::Started, this, &ARed::Shoot);
+
 
 	
 	}
@@ -140,6 +145,20 @@ void ARed::attackHit(UPrimitiveComponent *OverlappedComponent,
 		  disableAttackBox();
 	}
 
+
+}
+
+void ARed::spawnArrow() {
+
+		FActorSpawnParameters spawnParams;
+        spawnParams.Owner = this;
+        spawnParams.SpawnCollisionHandlingOverride =
+            ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButAlwaysSpawn;
+
+
+		FVector projectilePosition = GetActorLocation() + GetActorForwardVector() * 200;
+
+		GetWorld()->SpawnActor<ABaseProjectile>(projectile, projectilePosition, FRotator(), spawnParams);
 
 }
 

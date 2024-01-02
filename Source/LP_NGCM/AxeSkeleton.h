@@ -13,5 +13,15 @@ UCLASS()
 class LP_NGCM_API AAxeSkeleton : public AEnemy
 {
 	GENERATED_BODY()
-	
+public:
+  AAxeSkeleton();
+
+ void takeDamage_Implementation(float ammount) override;
+ UFUNCTION(BlueprintImplementableEvent)
+ void HurtAnim();
+
+ void die_Implementation() override;
+
+ UFUNCTION(BlueprintImplementableEvent)
+ void DieAnim();
 };
