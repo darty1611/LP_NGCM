@@ -12,6 +12,7 @@ void URedAttackNotifyState::OnNotifyBegin_Implementation(
       if (IsValid(p)) {
       
           p->enableAttackBox();
+          p->ApplyDamageToOverlappingEnemies();
 
       }
 
@@ -28,7 +29,9 @@ void URedAttackNotifyState::OnNotifyEnd_Implementation(
         ARed* p = Cast<ARed>(OwningInstance->GetOwningActor());
       if (IsValid(p)) {
       
-          p->disableAttackBox();
+            p->disableAttackBox();
+
+
       }
 
       }

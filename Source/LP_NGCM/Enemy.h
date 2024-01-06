@@ -20,6 +20,9 @@ public:
 	UPROPERTY(EditAnywhere, Category = "Health System")
     class UHealthSystem* HealthSystemComponent;
 
+	UPROPERTY(EditAnywhere, Category = "AI")
+    class UPawnSensingComponent* pawnSensingComponent;
+
 
 	void takeDamage_Implementation(float ammount) override;
 	void heal_Implementation(float ammount) override;

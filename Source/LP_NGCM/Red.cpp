@@ -15,6 +15,7 @@
 #include "HealthSystem.h"
 #include "Components/BoxComponent.h"
 #include "BaseProjectile.h"
+#include "Enemy.h"
 
 
 ARed::ARed() {
@@ -38,7 +39,7 @@ ARed::ARed() {
 	attackBox = CreateDefaultSubobject<UBoxComponent>(TEXT("Attack Box"));
 	attackBox->SetupAttachment(RootComponent);
 	disableAttackBox();
-	attackBox->OnComponentBeginOverlap.AddDynamic(this, &ARed::attackHit);
+	//attackBox->OnComponentBeginOverlap.AddDynamic(this, &ARed::attackHit); //Maybe not needed anymore
 
 
 	HealthSystemComponent = CreateDefaultSubobject<UHealthSystem>(TEXT("Health System"));
@@ -138,14 +139,36 @@ void ARed::attackHit(UPrimitiveComponent *OverlappedComponent,
                      int32 OtherBodyIndex, bool bFromSweep,
                      const FHitResult &SweepResult) {
 
+	 if (AEnemy* Enemy = Cast<AEnemy>(OtherActor))
+        {
+            // Apply damage to the enemy
+            Enemy->takeDamage_Implementation(35);
+            
+	
+	 }
+
+	disableAttackBox();
+	
+
+}
 
 
-	if (IHealthSystemUsage *other = Cast<IHealthSystemUsage>(OtherActor)) {
-          other->takeDamage_Implementation(35);
-		  disableAttackBox();
-	}
+//try to achieve damage in area
+void ARed::ApplyDamageToOverlappingEnemies()
+{
+    TArray<AActor*> OverlappingActors;
+    attackBox->GetOverlappingActors(OverlappingActors);
 
-
+    for (AActor* OverlappingActor : OverlappingActors)
+    {
+        if (AEnemy* Enemy = Cast<AEnemy>(OverlappingActor))
+        {
+            // Apply damage to the enemy
+            Enemy->takeDamage_Implementation(35);
+            
+        }
+    }
+	
 }
 
 void ARed::spawnArrow() {
