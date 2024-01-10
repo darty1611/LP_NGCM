@@ -3,6 +3,7 @@
 #pragma once
 
 #include "HealthSystemUsage.h"
+#include "HealthSystem.h"
 #include "CoreMinimal.h"
 #include "PaperZDCharacter.h"
 #include "Red.generated.h"
@@ -10,7 +11,8 @@
 class UInputMappingContext;
 class UInputAction;
 struct FInputActionValue;
-class UHealthSystem;
+
+
 /**
  * 
  */
@@ -56,7 +58,7 @@ class LP_NGCM_API ARed : public APaperZDCharacter, public IHealthSystemUsage
 
 	/** Health System*/
 	UPROPERTY(EditAnywhere, Category = "Health System")
-    class UHealthSystem* HealthSystemComponent;
+    UHealthSystem* HealthComponent;
 
 protected:
 	// APawn interface
@@ -78,7 +80,7 @@ public:
 	void heal_Implementation(float ammount) override;
 	void die_Implementation() override;
 	UFUNCTION(BlueprintCallable)
-        UHealthSystem *getHealthSystemComponent() {return HealthSystemComponent;}
+       UHealthSystem *getHealthSystemComponent() {return HealthComponent;}
 
 	UFUNCTION(BlueprintImplementableEvent) 
 	void Attack();

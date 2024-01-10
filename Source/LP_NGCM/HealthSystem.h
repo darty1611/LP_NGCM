@@ -39,10 +39,10 @@ public:
         void takeDamage(float ammount);
 	
 	UFUNCTION(BlueprintCallable)
-        float getHealth();
+        float getHealth() const;
 
 	UFUNCTION(BlueprintCallable)
-        float getMaxHealth() {return maxHealth;}
+        float getMaxHealth() const {return maxHealth;}
 
 	UFUNCTION(BlueprintCallable)
         bool isFullHealth(float ammount);

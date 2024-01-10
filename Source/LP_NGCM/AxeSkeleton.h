@@ -24,4 +24,7 @@ public:
 
  UFUNCTION(BlueprintImplementableEvent)
  void DieAnim();
+
+ UFUNCTION(BlueprintImplementableEvent, BlueprintCallable) 
+	void Attack();
 };

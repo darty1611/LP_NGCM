@@ -44,6 +44,9 @@ class ALP_NGCMCharacter : public ACharacter
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
 	UInputAction* LookAction;
 
+	UPROPERTY(EditAnywhere, Category = "Health System")
+    class UHealthSystem* HealthSystemComponent;
+
 public:
 	ALP_NGCMCharacter();
 	

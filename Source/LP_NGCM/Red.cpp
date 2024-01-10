@@ -12,7 +12,6 @@
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
 #include "InputActionValue.h"
-#include "HealthSystem.h"
 #include "Components/BoxComponent.h"
 #include "BaseProjectile.h"
 #include "Enemy.h"
@@ -41,8 +40,8 @@ ARed::ARed() {
 	disableAttackBox();
 	//attackBox->OnComponentBeginOverlap.AddDynamic(this, &ARed::attackHit); //Maybe not needed anymore
 
-
-	HealthSystemComponent = CreateDefaultSubobject<UHealthSystem>(TEXT("Health System"));
+ 
+	HealthComponent = CreateDefaultSubobject<UHealthSystem>(TEXT("HELTh"));
 }
 
 void ARed::Move(const FInputActionValue &Value) {
@@ -108,16 +107,16 @@ void ARed::SetupPlayerInputComponent(UInputComponent *PlayerInputComponent) {// 
 
 
 void ARed::takeDamage_Implementation(float ammount) {
-	HealthSystemComponent->takeDamage(ammount);
+	HealthComponent->takeDamage(ammount);
 
-	if (HealthSystemComponent->isDead()) {
+	if (HealthComponent->isDead()) {
 		die_Implementation();          
 	}
 
 }
 
 void ARed::heal_Implementation(float ammount) {
-	 HealthSystemComponent->heal(ammount);
+	 HealthComponent->heal(ammount);
 }
 
 void ARed::die_Implementation() {}

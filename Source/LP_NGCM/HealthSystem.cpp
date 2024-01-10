@@ -41,7 +41,7 @@ void UHealthSystem::heal(float ammount) {
 void UHealthSystem::takeDamage(float ammount) { 
 	health -= ammount; }
 
-float UHealthSystem::getHealth() { return health; }
+float UHealthSystem::getHealth() const { return health; }
 
 bool UHealthSystem::isFullHealth(float ammount) {
         return health == maxHealth;
