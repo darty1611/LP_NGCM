@@ -6,9 +6,11 @@
 #include "HealthSystem.h"
 #include "Perception/PawnSensingComponent.h"
 
+
 AEnemy::AEnemy() {
 	 HealthSystemComponent = CreateDefaultSubobject<UHealthSystem>(TEXT("Health"));
 	 pawnSensingComponent = CreateDefaultSubobject<UPawnSensingComponent>(TEXT("Pawn Sensing"));
+	//GetCapsuleComponent()->SetCollisionProfileName("NoCollision");
 }
 
 void AEnemy::takeDamage_Implementation(float ammount) {

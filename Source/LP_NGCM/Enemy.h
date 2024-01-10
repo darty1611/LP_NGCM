@@ -30,5 +30,13 @@ public:
 	UFUNCTION(BlueprintCallable)
         UHealthSystem *getHealthSystemComponent() {return HealthSystemComponent;}
 
+	 UFUNCTION(BlueprintImplementableEvent)
+ void HurtAnim();
 
+
+ UFUNCTION(BlueprintImplementableEvent)
+ void DieAnim();
+
+ UFUNCTION(BlueprintImplementableEvent, BlueprintCallable) 
+	void Attack();
 };
