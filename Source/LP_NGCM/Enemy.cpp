@@ -29,3 +29,17 @@ void AEnemy::heal_Implementation(float ammount) {
 void AEnemy::die_Implementation() {
 	Destroy(); 
 }
+
+void AEnemy::Tick(float DeltaSeconds) {
+
+	Super::Tick(DeltaSeconds);
+
+
+	if (GetVelocity().X < 0) {
+		SetActorRotation( FRotator(0, 180, 0));
+    } 
+	else if (GetVelocity().X > 0){
+		SetActorRotation(FRotator(0));
+	}
+
+}

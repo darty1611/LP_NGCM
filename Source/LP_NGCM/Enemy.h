@@ -39,4 +39,7 @@ public:
 
  UFUNCTION(BlueprintImplementableEvent, BlueprintCallable) 
 	void Attack();
+
+
+	virtual void Tick(float DeltaSeconds);
 };

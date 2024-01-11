@@ -11,7 +11,7 @@ class LP_NGCM_API ABaseProjectile : public AActor
 {
 GENERATED_BODY()
 
-
+protected:
 	UPROPERTY(EditAnywhere, Category = StaticMesh)
         class UStaticMeshComponent *staticMesh;
 
