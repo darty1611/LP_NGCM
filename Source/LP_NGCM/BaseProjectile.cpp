@@ -59,6 +59,7 @@ void ABaseProjectile::OnHit(UPrimitiveComponent* OverlappedComponent, AActor* Ot
 	if (IHealthSystemUsage *other = Cast<IHealthSystemUsage>(OtherActor)) {
           other->takeDamage_Implementation(damage);
 	}
+
 	Destroy();
 
 }
