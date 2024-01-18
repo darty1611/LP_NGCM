@@ -119,7 +119,9 @@ void ARed::heal_Implementation(float ammount) {
 	 HealthComponent->heal(ammount);
 }
 
-void ARed::die_Implementation() {}
+void ARed::die_Implementation() { 
+	
+}
 
 void ARed::enableAttackBox() {
        
@@ -138,13 +140,15 @@ void ARed::attackHit(UPrimitiveComponent *OverlappedComponent,
                      int32 OtherBodyIndex, bool bFromSweep,
                      const FHitResult &SweepResult) {
 
-	 if (AEnemy* Enemy = Cast<AEnemy>(OtherActor))
-        {
-            // Apply damage to the enemy
-            Enemy->takeDamage_Implementation(35);
-            
+	 //if (AEnemy* Enemy = Cast<AEnemy>(OtherActor))
+  //      {
+  //          // Apply damage to the enemy
+  //          Enemy->takeDamage_Implementation(35);
+  //          
 	
-	 }
+	 //}
+
+	ApplyDamageToOverlappingEnemies();
 
 	disableAttackBox();
 	

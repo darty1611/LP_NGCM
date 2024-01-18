@@ -5,7 +5,7 @@
 #include "PaperZDPlaySlotOverrideAction.h"
 
 AAxeSkeleton::AAxeSkeleton() {
-
+	baseDamage = 5;
 }
 
 void AAxeSkeleton::takeDamage_Implementation(float ammount) {
@@ -16,5 +16,4 @@ void AAxeSkeleton::takeDamage_Implementation(float ammount) {
 }
 
 void AAxeSkeleton::die_Implementation() {
-	DieAnim();
-}
+	DieAnim(); }

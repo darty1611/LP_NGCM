@@ -4,6 +4,7 @@
 #include "FlyingEye.h"
 
 #include "FlyingEyeProjectile.h"
+#include "Kismet/GameplayStatics.h"
 
 AFlyingEye::AFlyingEye() {
 
@@ -25,7 +26,9 @@ FActorSpawnParameters spawnParams;
             ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButAlwaysSpawn;
 
 
-		FVector projectilePosition = GetActorLocation() + GetActorForwardVector() * 200;
+		FVector projectilePosition = GetActorTransform().GetLocation() + (GetWorld()->GetFirstPlayerController()->GetPawn()->GetActorLocation()).Normalize();
+		
+
 
 		GetWorld()->SpawnActor<ABaseProjectile>(projectile, projectilePosition, FRotator(), spawnParams);
 }

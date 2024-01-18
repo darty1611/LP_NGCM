@@ -10,6 +10,8 @@ AFlyingEyeProjectile::AFlyingEyeProjectile() {
 
     projectileMovement->InitialSpeed = 1000;
 
+    sphereCollider->SetCollisionProfileName("EnemyWeapon");
+
 }
 
 void AFlyingEyeProjectile::BeginPlay() {
@@ -28,7 +30,7 @@ void AFlyingEyeProjectile::BeginPlay() {
         if (PlayerPawn)
         {
             // Get the location of the player pawn
-            FVector PlayerLocation = PlayerPawn->GetActorLocation();
+            FVector PlayerLocation = PlayerPawn->GetActorLocation() + FVector(0,0,60);
 
             // Now you have the player location in the variable 'PlayerLocation'
             // You can use it as needed
