@@ -16,9 +16,9 @@ AAbstractItem::AAbstractItem()
 	staticMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Static Mesh"));
 	collider = CreateDefaultSubobject<USphereComponent>(TEXT("Collider"));
 
-	RootComponent =  staticMesh;
+	RootComponent = collider;
 
-    collider->SetupAttachment(RootComponent);
+    staticMesh->SetupAttachment(RootComponent);
 	collider->OnComponentBeginOverlap.AddDynamic(this, &AAbstractItem::action);
 
 

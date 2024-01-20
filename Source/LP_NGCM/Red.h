@@ -40,7 +40,7 @@ class LP_NGCM_API ARed : public APaperZDCharacter, public IHealthSystemUsage
 	/** Move Input Action */
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
 	UInputAction* MoveAction;
-
+	
 	/** Attack Input Action */
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
 	UInputAction* AttackAction;
@@ -59,6 +59,12 @@ class LP_NGCM_API ARed : public APaperZDCharacter, public IHealthSystemUsage
 	/** Health System*/
 	UPROPERTY(EditAnywhere, Category = "Health System")
     UHealthSystem* HealthComponent;
+
+protected:
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	bool lockRotation = false;
+
 
 protected:
 	// APawn interface

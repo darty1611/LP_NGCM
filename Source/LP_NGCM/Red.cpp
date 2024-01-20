@@ -51,11 +51,14 @@ void ARed::Move(const FInputActionValue &Value) {
 
 	if (Controller != nullptr)
 	{
-          if (MovementVector.X < 0) {
-            GetCapsuleComponent()->SetWorldRotation(FRotator(0, 180, 0));
-          } else if (MovementVector.X > 0) {
-			GetCapsuleComponent()->SetWorldRotation(FRotator(0,0,0));
-          }
+          if (!lockRotation) {
+          
+			  if (MovementVector.X < 0) {
+				GetCapsuleComponent()->SetWorldRotation(FRotator(0, 180, 0));
+			  } else if (MovementVector.X > 0) {
+				GetCapsuleComponent()->SetWorldRotation(FRotator(0,0,0));
+			  }
+		  }
 		// add movement 
 		AddMovementInput(FVector(1,0,0), MovementVector.X);
 		AddMovementInput(FVector(0,-1,0), MovementVector.Y);
