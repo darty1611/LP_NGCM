@@ -172,7 +172,7 @@ void ARed::ApplyDamageToOverlappingEnemies()
         if (AEnemy* Enemy = Cast<AEnemy>(OverlappingActor))
         {
             // Apply damage to the enemy
-            Enemy->takeDamage_Implementation(35);
+            Enemy->takeDamage_Implementation(baseDamage);
             
         }
     }

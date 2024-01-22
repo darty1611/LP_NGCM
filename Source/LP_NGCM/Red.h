@@ -54,6 +54,9 @@ class LP_NGCM_API ARed : public APaperZDCharacter, public IHealthSystemUsage
 	class UBoxComponent* attackBox;
 
 	UPROPERTY(EditAnywhere, Category = "Combat")
+	float baseDamage = 20;
+
+	UPROPERTY(EditAnywhere, Category = "Combat")
 	TSubclassOf<class ABaseProjectile> projectile;
 
 	/** Health System*/
