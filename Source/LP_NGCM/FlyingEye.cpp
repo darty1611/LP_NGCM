@@ -26,7 +26,7 @@ FActorSpawnParameters spawnParams;
             ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButAlwaysSpawn;
 
 
-		FVector projectilePosition = GetActorTransform().GetLocation() + (GetWorld()->GetFirstPlayerController()->GetPawn()->GetActorLocation()).Normalize();
+		FVector projectilePosition = GetActorTransform().GetLocation() + (GetWorld()->GetFirstPlayerController()->GetPawn()->GetActorLocation()).Normalize() + FVector(0,0,5);
 		
 
 

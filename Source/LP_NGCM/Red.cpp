@@ -122,7 +122,9 @@ void ARed::heal_Implementation(float ammount) {
 	 HealthComponent->heal(ammount);
 }
 
-void ARed::die_Implementation() { 
+void ARed::die_Implementation() {
+
+	DieAnim();
 	
 }
 

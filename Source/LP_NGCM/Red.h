@@ -85,6 +85,8 @@ public:
 	void takeDamage_Implementation(float ammount) override;
 	void heal_Implementation(float ammount) override;
 	void die_Implementation() override;
+	UFUNCTION(BlueprintImplementableEvent) 
+	void DieAnim();
 	UFUNCTION(BlueprintCallable)
        UHealthSystem *getHealthSystemComponent() {return HealthComponent;}
 
@@ -101,4 +103,5 @@ public:
 	void Shoot();
 	UFUNCTION(BlueprintCallable)
 	void spawnArrow();
+
 };
