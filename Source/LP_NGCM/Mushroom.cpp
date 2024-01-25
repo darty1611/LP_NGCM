@@ -15,5 +15,6 @@ void AMushroom::takeDamage_Implementation(float ammount) {
 }
 
 void AMushroom::die_Implementation() { 
+	Super::die_Implementation();
 	DieAnim(); 
 }

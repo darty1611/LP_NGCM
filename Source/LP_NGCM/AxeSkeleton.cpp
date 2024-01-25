@@ -16,4 +16,8 @@ void AAxeSkeleton::takeDamage_Implementation(float ammount) {
 }
 
 void AAxeSkeleton::die_Implementation() {
-	DieAnim(); }
+
+	Super::die_Implementation();
+	DieAnim(); 
+
+}
