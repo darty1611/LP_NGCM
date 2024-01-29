@@ -12,6 +12,8 @@ AEnemy::AEnemy() {
 	 HealthSystemComponent = CreateDefaultSubobject<UHealthSystem>(TEXT("Health"));
 	 pawnSensingComponent = CreateDefaultSubobject<UPawnSensingComponent>(TEXT("Pawn Sensing"));
 	 GetCapsuleComponent()->SetCollisionProfileName("Enemy");
+
+	 AutoPossessAI = EAutoPossessAI::PlacedInWorldOrSpawned;
 }
 
 void AEnemy::takeDamage_Implementation(float ammount) {

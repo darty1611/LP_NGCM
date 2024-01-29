@@ -41,7 +41,7 @@ ARed::ARed() {
 	//attackBox->OnComponentBeginOverlap.AddDynamic(this, &ARed::attackHit); //Maybe not needed anymore
 
  
-	HealthComponent = CreateDefaultSubobject<UHealthSystem>(TEXT("HELTh"));
+	HealthComponent = CreateDefaultSubobject<UHealthSystem>(TEXT("Health System"));
 }
 
 void ARed::Move(const FInputActionValue &Value) {
