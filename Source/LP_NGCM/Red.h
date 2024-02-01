@@ -61,7 +61,7 @@ class LP_NGCM_API ARed : public APaperZDCharacter, public IHealthSystemUsage
 
 	/** Health System*/
 	UPROPERTY(EditAnywhere, Category = "Health System")
-    UHealthSystem* HealthComponent;
+    UHealthSystem* Health;
 
 protected:
 
@@ -91,7 +91,7 @@ public:
 	UFUNCTION(BlueprintImplementableEvent) 
 	void DieAnim();
 	UFUNCTION(BlueprintCallable)
-       UHealthSystem *getHealthSystemComponent() {return HealthComponent;}
+       UHealthSystem *getHealthSystemComponent() {return Health;}
 
 	UFUNCTION(BlueprintImplementableEvent) 
 	void Attack();

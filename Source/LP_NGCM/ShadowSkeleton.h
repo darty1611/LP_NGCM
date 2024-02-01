@@ -31,7 +31,10 @@ private:
 	TSubclassOf<class AAxeSkeleton> axeSkeletonClass;
 
 	UPROPERTY(EditAnywhere)
-	TSubclassOf<AController> axeSkeletonController;
+	TSubclassOf<class AFlyingEyeProjectile> projectile;
+
+	
+
 
 public:
 
@@ -42,9 +45,15 @@ public:
 	void die_Implementation() override;
 
 
+	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable)
+	void spawnAxeSkeletonsAnim();
 
 	void spawnAxeSkeletons();
-    void shootSoul();
+
+	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable)
+    void shootSoulAnim();
+
+	void spawnSoul();
 
 	
 private:

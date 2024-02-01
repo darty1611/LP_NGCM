@@ -4,6 +4,7 @@
 #include "ShadowSkeleton.h"
 #include "Components/SceneComponent.h"
 #include "AxeSkeleton.h"
+#include "FlyingEyeProjectile.h"
 
 
 AShadowSkeleton::AShadowSkeleton() {
@@ -29,6 +30,7 @@ void AShadowSkeleton::takeDamage_Implementation(float ammount) {
 void AShadowSkeleton::die_Implementation() {
 
 	Super::die_Implementation();
+	DieAnim(); 
 
 }
 
@@ -42,7 +44,18 @@ void AShadowSkeleton::spawnAxeSkeletons() {
 	spawnAxeSkeleton(sp2);
 	spawnAxeSkeleton(sp3);
 
-	//GetWorld()->SpawnActor<AAxeSkeleton>(axeSkeletonClass, GetActorLocation() + 100, GetActorRotation(), FActorSpawnParameters());
+}
+
+void AShadowSkeleton::spawnSoul() {
+
+	FTransform t = GetActorTransform();
+	t.SetLocation(t.GetLocation() + GetActorForwardVector() * 50);
+	FActorSpawnParameters p;
+	p.Owner = this;
+	p.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButAlwaysSpawn;
+
+	GetWorld()->SpawnActor<AFlyingEyeProjectile>(projectile, t, p);
+
 }
 
 void AShadowSkeleton::spawnAxeSkeleton(FVector location) {

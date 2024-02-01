@@ -42,8 +42,10 @@ void ABaseProjectile::BeginPlay()
 {
 	Super::BeginPlay();
 
-	projectileMovement->SetVelocityInLocalSpace(
-            GetOwner()->GetActorForwardVector() * projectileMovement->InitialSpeed);
+	int xvel = GetOwner()->GetActorRotation().Yaw == 0 ? 1 : -1;
+
+
+	projectileMovement->SetVelocityInLocalSpace(FVector(xvel, 0, 0) * projectileMovement->InitialSpeed);
 	
 }
 

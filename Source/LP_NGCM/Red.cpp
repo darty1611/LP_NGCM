@@ -41,7 +41,7 @@ ARed::ARed() {
 	//attackBox->OnComponentBeginOverlap.AddDynamic(this, &ARed::attackHit); //Maybe not needed anymore
 
  
-	HealthComponent = CreateDefaultSubobject<UHealthSystem>(TEXT("Health System"));
+	Health = CreateDefaultSubobject<UHealthSystem>(TEXT("Health"));
 }
 
 void ARed::Move(const FInputActionValue &Value) {
@@ -110,16 +110,16 @@ void ARed::SetupPlayerInputComponent(UInputComponent *PlayerInputComponent) {// 
 
 
 void ARed::takeDamage_Implementation(float ammount) {
-	HealthComponent->takeDamage(ammount);
+	Health->takeDamage(ammount);
 
-	if (HealthComponent->isDead()) {
+	if (Health->isDead()) {
 		die_Implementation();          
 	}
 
 }
 
 void ARed::heal_Implementation(float ammount) {
-	 HealthComponent->heal(ammount);
+	 Health->heal(ammount);
 }
 
 void ARed::die_Implementation() {
